@@ -1,0 +1,18 @@
+# server setup
+host = "localhost"
+port = ":8081"
+indexDir = "www/index.html"
+
+
+
+# errors
+#[error]
+#err400 = "Bad Request"
+#err401 = "Unauthorized"
+#err403 = "Forbidden"
+#err404 = "Page Not Found"
+#err405 = "Method Not Allowed"
+#err500 = "Intrenal Server Error"
+#err502 = "Bad Gateway"
+#err503 = "Service Unavailable"
+#err504 = "Gateway Timeout"
