@@ -2,8 +2,14 @@ package main
 
 import(
 	"fmt"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("This is just a formality")
+	fs := http.FileServer(http.Dir("www"))
+	fmt.Println("GhostCat is running ... BOO!")
+
+	http.Handle("/", fs)
+
+	http.ListenAndServe(":8081", nil)
 }
