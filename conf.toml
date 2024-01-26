@@ -1,7 +1,7 @@
 # server setup
 host = "localhost"
 port = ":8081"
-indexDir = "www/index.html"
+index = "www"
 
 
 
