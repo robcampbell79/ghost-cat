@@ -7,25 +7,28 @@ import(
 	"github.com/BurntSushi/toml"
 )
 
-type Server struct {
-	host 		string `toml:"server"`
-	port 		string `toml:"port"`
-	indexDir 	string `toml:"indexDir"`
+type Config struct {
+	Host 	string `toml:"host"`
+	Port 	string `toml:"port"`
+	Index 	string `toml:"index"`
 }
 
 func main() {
-	var srv Server
+	var conf Config
 
-	_, err := toml.DecodeFile("conf.toml", &srv)
+	_, err := toml.DecodeFile("./conf.toml", &conf)
 	if err != nil {
 		panic(err.Error())
 	}
 
-	fs := http.FileServer(http.Dir("www"))
+	fmt.Println("index: ", conf.Index)
+	fmt.Println("port: ", conf.Port)
+
+	fs := http.FileServer(http.Dir(conf.Index))
 
 	fmt.Println("GhostCat is running ... BOO!")
 
 	http.Handle("/", fs)
 
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(conf.Port, nil)
 }
